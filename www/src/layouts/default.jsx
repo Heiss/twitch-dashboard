@@ -3,10 +3,14 @@ import Site from "../site"
 
 export default function ({ children }) {
     return (
-        <div class="max-w-screen-xl mx-auto">
+        <div>
             <Header />
-            <main class="mt-10">
-                {children}
+            <main>
+                <div class="container w-full mx-auto pt-20">
+                    <div class="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
+                        {children}
+                    </div>
+                </div>
             </main>
             <Footer />
         </div >
@@ -15,10 +19,7 @@ export default function ({ children }) {
 
 function Header() {
     return (
-        <header class="flex items-center justify-between py-2 border-b">
-            <a href="#" class="px-2 lg:px-0 font-bold">
-                {Site.navbarTitle}
-            </a>
+        <header>
             <Nav />
         </header>
     );
@@ -26,28 +27,36 @@ function Header() {
 
 function Footer() {
     return (
-        <footer class="border-t mt-32 pt-12 pb-32 px-4 lg:px-0">
-            <div class="flex">
+        <footer class="bg-gray-900 border-t border-gray-400 shadow">
+            <div class="container max-w-md mx-auto flex py-8">
 
-                <div class="w-full md:w-1/3 lg:w-1/4">
-                    <h6 class="font-semibold text-gray-700 mb-4">Company</h6>
-                    <ul>
-                        <li> <a href="" class="block text-gray-600 py-2">Team</a> </li>
-                        <li> <a href="" class="block text-gray-600 py-2">About us</a> </li>
-                        <li> <a href="" class="block text-gray-600 py-2">Press</a> </li>
-                    </ul>
+                <div class="w-full mx-auto flex flex-wrap">
+                    <div class="flex w-full md:w-1/2 ">
+                        <div class="px-8">
+                            <h3 class="font-bold font-bold text-gray-100">About</h3>
+                            <p class="py-4 text-gray-600 text-sm">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel mi ut felis tempus commodo nec id erat. Suspendisse consectetur dapibus velit ut lacinia.
+						</p>
+                        </div>
+                    </div>
+
+                    <div class="flex w-full md:w-1/2">
+                        <div class="px-8">
+                            <h3 class="font-bold font-bold text-gray-100">Social</h3>
+                            <ul class="list-reset items-center text-sm pt-3">
+                                <li>
+                                    <a class="inline-block text-gray-600 no-underline hover:text-gray-100 hover:text-underline py-1" href="#">Add social link</a>
+                                </li>
+                                <li>
+                                    <a class="inline-block text-gray-600 no-underline hover:text-gray-100 hover:text-underline py-1" href="#">Add social link</a>
+                                </li>
+                                <li>
+                                    <a class="inline-block text-gray-600 no-underline hover:text-gray-100 hover:text-underline py-1" href="#">Add social link</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="w-full md:w-1/3 lg:w-1/4">
-                    <h6 class="font-semibold text-gray-700 mb-4">Content</h6>
-                    <ul>
-                        <li> <a href="" class="block text-gray-600 py-2">Blog</a> </li>
-                        <li> <a href="" class="block text-gray-600 py-2">Privacy Policy</a> </li>
-                        <li> <a href="" class="block text-gray-600 py-2">Terms & Conditions</a> </li>
-                        <li> <a href="" class="block text-gray-600 py-2">Documentation</a> </li>
-                    </ul>
-                </div>
-
             </div>
         </footer>
     );

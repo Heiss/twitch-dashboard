@@ -1,5 +1,5 @@
 {
-  "name": "create-wasm-app",
+  "name": "twitch-wasm",
   "version": "0.1.0",
   "description": "create an app to consume rust-generated wasm packages",
   "main": "index.html",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rustwasm/create-wasm-app.git"
+    "url": "git+https://github.com/Heiss/twitch-dashboard.git"
   },
   "keywords": [
     "webassembly",
@@ -19,12 +19,13 @@
     "webpack",
     "crankjs"
   ],
-  "author": "Ashley Williams <ashley666ashley@gmail.com>",
-  "license": "(MIT OR Apache-2.0)",
+  "source": "src/index.jsx",
+  "author": "Peter Heiss <peter.heiss@uni-muenster.de>",
+  "license": "(MIT)",
   "bugs": {
-    "url": "https://github.com/rustwasm/create-wasm-app/issues"
+    "url": "https://github.com/Heiss/twitch-dashboard/issues"
   },
-  "homepage": "https://github.com/rustwasm/create-wasm-app#readme",
+  "homepage": "https://github.com/Heiss/twitch-dashboard#readme",
   "eslint": {
     "settings": {
       "react": {
@@ -35,25 +36,30 @@
   "dependencies": {
     "@bikeshaving/crank": "^0.3.7",
     "@fortawesome/fontawesome-free": "^5.15.1",
-    "autoprefixer": "^10.0.4",
     "chart.js": "^2.9.4",
+    "css-loader": "^5.0.1",
     "navaid": "^1.2.0",
-    "node-fetch": "^2.6.1",
     "path": "^0.12.7",
-    "polka": "^0.5.2",
-    "postcss": "^8.1.14",
-    "sirv": "^1.0.9",
-    "tailwindcss": "^2.0.1",
+    "regenerator-runtime": "^0.13.7",
+    "style-loader": "^2.0.0",
     "twitch-wasm": "file:../pkg"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "@babel/loader": "^8.2.2",
     "@babel/preset-env": "^7.12.7",
     "@babel/preset-react": "^7.9.4",
+    "autoprefixer": "^10.0.4",
     "babel-loader": "^8.2.2",
+    "babel-preset-crank": "^0.2.0",
     "copy-webpack-plugin": "^5.0.0",
     "hello-wasm-pack": "^0.1.0",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^1.3.2",
+    "postcss": "^8.1.14",
+    "postcss-cli": "^8.3.0",
+    "postcss-loader": "^4.1.0",
+    "postcss-preset-env": "^6.7.0",
+    "tailwindcss": "^2.0.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5"
