@@ -1,0 +1,61 @@
+{
+  "name": "create-wasm-app",
+  "version": "0.1.0",
+  "description": "create an app to consume rust-generated wasm packages",
+  "main": "index.html",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack-dev-server",
+    "clean": "rm -rf dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rustwasm/create-wasm-app.git"
+  },
+  "keywords": [
+    "webassembly",
+    "wasm",
+    "rust",
+    "webpack",
+    "crankjs"
+  ],
+  "author": "Ashley Williams <ashley666ashley@gmail.com>",
+  "license": "(MIT OR Apache-2.0)",
+  "bugs": {
+    "url": "https://github.com/rustwasm/create-wasm-app/issues"
+  },
+  "homepage": "https://github.com/rustwasm/create-wasm-app#readme",
+  "eslint": {
+    "settings": {
+      "react": {
+        "pragma": "createElement"
+      }
+    }
+  },
+  "dependencies": {
+    "@bikeshaving/crank": "^0.3.7",
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "autoprefixer": "^10.0.4",
+    "chart.js": "^2.9.4",
+    "navaid": "^1.2.0",
+    "node-fetch": "^2.6.1",
+    "path": "^0.12.7",
+    "polka": "^0.5.2",
+    "postcss": "^8.1.14",
+    "sirv": "^1.0.9",
+    "tailwindcss": "^2.0.1",
+    "twitch-wasm": "file:../pkg"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/loader": "^8.2.2",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-react": "^7.9.4",
+    "babel-loader": "^8.2.2",
+    "copy-webpack-plugin": "^5.0.0",
+    "hello-wasm-pack": "^0.1.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  }
+}
