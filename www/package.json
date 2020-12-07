@@ -38,11 +38,12 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "chart.js": "^2.9.4",
     "css-loader": "^5.0.1",
+    "jquery": "^3.5.1",
     "navaid": "^1.2.0",
     "path": "^0.12.7",
     "regenerator-runtime": "^0.13.7",
     "style-loader": "^2.0.0",
-    "twitch-wasm": "file:../pkg"
+    "twitch-wasm": "file:../wasm/pkg"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
