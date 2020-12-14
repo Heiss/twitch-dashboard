@@ -10,6 +10,16 @@ Learning rust with an api server written in Rust and an web written in CrankJS +
 
 None
 
+## Usage
+
+Use `make` to install all dependencies, build the application or watch for changes.
+
+```bash
+make install
+make build
+make watch
+```
+
 ## Doing list
 
 - [ ] Rust API Server for twitch
