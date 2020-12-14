@@ -1,0 +1,7 @@
+
+[oauth]
+authorization_url=https://id.twitch.tv/oauth2/authorize
+token_url=https://id.twitch.tv/oauth2/token
+callback_url=http://localhost:8080/auth/twitch/callback
+client_id=abc
+client_secret=xyz

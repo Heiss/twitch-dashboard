@@ -1,5 +1,6 @@
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require('path');
 
@@ -11,10 +12,14 @@ module.exports = {
   },
   mode: "development",
   plugins: [
-    new CopyWebpackPlugin(['index.html']),
     new MiniCssExtractPlugin({
       filename: "styles.css",
       chunkFilename: "styles.css"
+    }),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Tailwind Starter Template - Night Admin Template: Tailwind Toolbox',
+      template: 'index.html'
     }),
   ],
   resolve: {

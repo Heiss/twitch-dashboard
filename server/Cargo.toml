@@ -1,0 +1,22 @@
+[package]
+name = "twitch-dashboard-server"
+version = "0.1.0"
+authors = ["Peter Heiss <peter.heiss@uni-muenster.de>"]
+edition = "2018"
+build = "src/build.rs"
+
+[dependencies]
+twitch-irc = { version = "1.0.0", features = ["refreshing-token", "transport-tcp"] }
+actix-web = "3" # https://actix.rs/docs/getting-started/
+diesel = "1.4.5" # https://diesel.rs/guides/getting-started/
+notify-rust = "4" # https://github.com/hoodie/notify-rust/tree/master/examples
+actix-web-static-files = "3.0"
+actix-rt = "1.1.1"
+rust-ini = "0.16.0"
+serde = { version = "1.0.118", features = ["derive"] }
+
+[build-dependencies]
+actix-web-static-files = "3.0"
+
+[profile.release]
+opt-level = 3
