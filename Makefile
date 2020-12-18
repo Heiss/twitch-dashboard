@@ -6,6 +6,10 @@ install:
 	npm install --prefix ./web/
 	cargo check --manifest-path server/Cargo.toml
 
+update:
+	cargo update --manifest-path ./server/Cargo.toml
+	npm update --prefix ./web/
+
 build:
 	npm run build --prefix ./web/
 	cargo build --release --manifest-path server/Cargo.toml
@@ -15,5 +19,5 @@ watch:
 	split-window -v \; \
 	send-keys 'npm run start --prefix ./web/' C-m \; \
 	split-window -h \; \
-	send-keys 'cd server && cargo watch -x "run" --watch-when-idle -w ../' C-m \; \
+	send-keys 'cd server && cargo watch -x "run" --watch-when-idle -w ../web/dist' C-m \; \
 	selectp -t 0 \;

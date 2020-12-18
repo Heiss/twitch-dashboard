@@ -1,4 +1,5 @@
 extern crate ini;
+
 use ini::Ini;
 use std::sync::Mutex;
 
@@ -32,7 +33,7 @@ async fn main() -> std::io::Result<()> {
         token_url: section.get("token_url").expect("missing token_url in conf.ini").to_string(),
         callback_url: section.get("callback_url").expect("missing callback_url in conf.ini").to_string(),
         client_id: section.get("client_id").expect("missing client_id in conf.ini").to_string(),
-        client_secret: section.get("client_secret").expect("missing client_secret in conf.ini").to_string()
+        client_secret: section.get("client_secret").expect("missing client_secret in conf.ini").to_string(),
     });
 
     let token = match section.get("client_token") {
@@ -42,16 +43,16 @@ async fn main() -> std::io::Result<()> {
             String::from("")
         }
     };
-    let oauth = web::Data::new(Mutex::new(Oauth {token}));
+    let oauth = web::Data::new(Mutex::new(Oauth { token }));
 
     HttpServer::new(move || {
         let generated = generate();
         App::new().app_data(provider.clone()).app_data(oauth.clone())
-        .service(actix_web_static_files::ResourceFiles::new(
-            "/", generated,
-        ))
+            .service(actix_web_static_files::ResourceFiles::new(
+                "/", generated,
+            ).resolve_not_found_to_root(), )
     })
-    .bind("127.0.0.1:8080")?
-    .run()
-    .await
+        .bind("127.0.0.1:8080")?
+        .run()
+        .await
 }

@@ -10,6 +10,9 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "bootstrap.js",
   },
+  watchOptions: {
+    ignored: /node_modules/
+  },
   mode: "development",
   plugins: [
     new MiniCssExtractPlugin({
@@ -18,15 +21,17 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Tailwind Starter Template - Night Admin Template: Tailwind Toolbox',
       template: 'index.html'
     }),
   ],
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000,
+    writeToDisk: true
+  },
   resolve: {
     extensions: ['.jsx', '.js'],
-  },
-  devServer: {
-    historyApiFallback: true
   },
   module: {
     rules: [
