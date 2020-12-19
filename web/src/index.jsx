@@ -29,7 +29,14 @@ $(function () {
     // but use pushState to change the URL bar
     $(document).on('click', 'a', function (e) {
         e.preventDefault();
-        let link = $(this).prop("pathname");
+        console.log(this)
+        let $this = $(this);
+        if($this.prop('hostname') !== window.location.hostname){
+            window.location = this.href;
+            return;
+        }
+
+        let link = $this.prop("pathname");
 
         if(link === "/") {
             link = routes[0][0];

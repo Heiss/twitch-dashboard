@@ -17,7 +17,7 @@ build:
 watch:
 	tmux new-session \; \
 	split-window -v \; \
-	send-keys 'npm run start --prefix ./web/' C-m \; \
+	send-keys 'cd web && npm run watch' C-m \; \
 	split-window -h \; \
 	send-keys 'cd server && cargo watch -x "run" --watch-when-idle -w ../web/dist' C-m \; \
 	selectp -t 0 \;

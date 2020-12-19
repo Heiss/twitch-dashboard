@@ -36,88 +36,85 @@ function UserMenu() {
 }
 
 async function UserButton() {
-    var logged_username = "User";
+    this.addEventListener("click", check);
+
+    let comp = <a href="https://id.twitch.tv/oauth2/authorize"
+                  class="px-4 py-2 block text-gray-100 hover:bg-gray-800 no-underline hover:no-underline">Login</a>;
 
     if (await user.is_logged()) {
-        return <Fragment>
+        comp = <Fragment>
             <button id="userButton" class="flex items-center focus:outline-none mr-3">
                 <img class="w-8 h-8 rounded-full mr-4" src="http://i.pravatar.cc/300" alt="Avatar of User"/> <span
-                class="hidden md:inline-block text-gray-100">Hi, {logged_username}</span>
+                class="hidden md:inline-block text-gray-100">Hi, {user.username()}</span>
             </button>
             <UserMenu/>
         </Fragment>;
-    } else {
-        return <a href="https://id.twitch.tv/oauth2/authorize"
-                  class="px-4 py-2 block text-gray-100 hover:bg-gray-800 no-underline hover:no-underline">Login</a>;
+    }
+
+    return comp;
+}
+
+/*Toggle dropdown list*/
+
+/*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+function check(e) {
+    console.log(e)
+    let userMenuDiv = document.getElementById("userMenu");
+    let userMenu = document.getElementById("userButton");
+
+    if (userMenuDiv === null) {
+        return;
+    }
+
+    let navMenuDiv = document.getElementById("nav-content");
+    let navMenu = document.getElementById("nav-toggle");
+    let target = (e && e.target) || (event && event.srcElement);
+
+    //User Menu
+    if (!checkParent(target, userMenuDiv)) {
+        // click NOT on the menu
+        if (checkParent(target, userMenu)) {
+            // click on the link
+            if (userMenuDiv.classList.contains("invisible")) {
+                userMenuDiv.classList.remove("invisible");
+            } else {
+                userMenuDiv.classList.add("invisible");
+            }
+        } else {
+            // click both outside link and outside menu, hide menu
+            userMenuDiv.classList.add("invisible");
+        }
+    }
+
+    //Nav Menu
+    if (!checkParent(target, navMenuDiv)) {
+        // click NOT on the menu
+        if (checkParent(target, navMenu)) {
+            // click on the link
+            if (navMenuDiv.classList.contains("hidden")) {
+                navMenuDiv.classList.remove("hidden");
+            } else {
+                navMenuDiv.classList.add("hidden");
+            }
+        } else {
+            // click both outside link and outside menu, hide menu
+            navMenuDiv.classList.add("hidden");
+        }
     }
 
 }
 
+function checkParent(t, elm) {
+    while (t.parentNode) {
+        if (t == elm) {
+            return true;
+        }
+        t = t.parentNode;
+    }
+    return false;
+}
+
 export default function* () {
-    $(() => {
-        /*Toggle dropdown list*/
-        /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
-
-        var userMenuDiv = document.getElementById("userMenu");
-        var userMenu = document.getElementById("userButton");
-
-        if (userMenuDiv === null) {
-            return;
-        }
-
-        var navMenuDiv = document.getElementById("nav-content");
-        var navMenu = document.getElementById("nav-toggle");
-
-        document.onclick = check;
-
-        function check(e) {
-            var target = (e && e.target) || (event && event.srcElement);
-
-            //User Menu
-            if (!checkParent(target, userMenuDiv)) {
-                // click NOT on the menu
-                if (checkParent(target, userMenu)) {
-                    // click on the link
-                    if (userMenuDiv.classList.contains("invisible")) {
-                        userMenuDiv.classList.remove("invisible");
-                    } else {
-                        userMenuDiv.classList.add("invisible");
-                    }
-                } else {
-                    // click both outside link and outside menu, hide menu
-                    userMenuDiv.classList.add("invisible");
-                }
-            }
-
-            //Nav Menu
-            if (!checkParent(target, navMenuDiv)) {
-                // click NOT on the menu
-                if (checkParent(target, navMenu)) {
-                    // click on the link
-                    if (navMenuDiv.classList.contains("hidden")) {
-                        navMenuDiv.classList.remove("hidden");
-                    } else {
-                        navMenuDiv.classList.add("hidden");
-                    }
-                } else {
-                    // click both outside link and outside menu, hide menu
-                    navMenuDiv.classList.add("hidden");
-                }
-            }
-
-        }
-
-        function checkParent(t, elm) {
-            while (t.parentNode) {
-                if (t == elm) {
-                    return true;
-                }
-                t = t.parentNode;
-            }
-            return false;
-        }
-
-    });
     let active;
 
     window.addEventListener("popstate", (ev) => {
@@ -157,9 +154,7 @@ export default function* () {
                                 </button>
                             </div>
                         </div>
-
                     </div>
-
 
                     <div
                         class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-900 z-20"

@@ -18,6 +18,10 @@ export async function is_logged() {
     }
 }
 
+export function username() {
+    return "User";
+}
+
 export async function login(token) {
     let result;
     try {
