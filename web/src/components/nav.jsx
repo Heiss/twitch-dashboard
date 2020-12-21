@@ -44,7 +44,7 @@ async function UserButton() {
     if (await user.is_logged()) {
         comp = <Fragment>
             <button id="userButton" class="flex items-center focus:outline-none mr-3">
-                <img class="w-8 h-8 rounded-full mr-4" src="http://i.pravatar.cc/300" alt="Avatar of User"/> <span
+                <img class="w-8 h-8 rounded-full mr-4" src="https://i.pravatar.cc/300" alt="Avatar of User"/> <span
                 class="hidden md:inline-block text-gray-100">Hi, {user.username()}</span>
             </button>
             <UserMenu/>
