@@ -9,11 +9,13 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bootstrap.js",
+    sourceMapFilename: "[name].js.map"
   },
   watchOptions: {
     ignored: /node_modules/
   },
   mode: "development",
+  devtool: 'source-map',
   plugins: [
     new MiniCssExtractPlugin({
       filename: "styles.css",
