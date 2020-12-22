@@ -19,5 +19,5 @@ watch:
 	split-window -v \; \
 	send-keys 'cd web && npm run watch' C-m \; \
 	split-window -h \; \
-	send-keys 'cd server && cargo watch -x "run" --watch-when-idle -w ../web/dist' C-m \; \
+	send-keys 'cd server && cargo watch -x "run" --watch-when-idle -w ../web/build' C-m \; \
 	selectp -t 0 \;

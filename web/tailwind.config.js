@@ -1,28 +1,16 @@
-module.exports = {
+const defaultTheme = require('tailwindcss/defaultTheme')
+const windmill = require('@windmill/react-ui/config')
+
+module.exports = windmill({
+  purge: ['src/**/*.js'],
   theme: {
     extend: {
-      screens: {
-        light: { raw: "(prefers-color-scheme: light)" },
-        dark: { raw: "(prefers-color-scheme: dark)" }
-      }
-    }
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      },
+      boxShadow: {
+        bottom: '0 5px 6px -7px rgba(0, 0, 0, 0.6), 0 2px 4px -5px rgba(0, 0, 0, 0.06)',
+      },
+    },
   },
-  variants: {},
-  plugins: [
-    function ({ addBase, config }) {
-      addBase({
-        body: {
-          color: config("theme.colors.black"),
-          backgroundColor: config("theme.colors.white")
-        },
-        "@screen dark": {
-          body: {
-            color: config("theme.colors.white"),
-            backgroundColor: config("theme.colors.black")
-          }
-        }
-      });
-    }
-  ],
-  purge: ["./public/**/*.html"],
-};
+})
