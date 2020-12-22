@@ -25,6 +25,7 @@
     "classnames": "2.2.6",
     "faker": "4.1.0",
     "react": "^16.13.1",
+    "react-async": "^10.0.1",
     "react-chartjs-2": "2.9.0",
     "react-dom": "^16.13.1",
     "react-focus-lock": "2.4.0",

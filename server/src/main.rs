@@ -3,6 +3,7 @@ extern crate ini;
 use ini::Ini;
 use std::sync::Mutex;
 
+mod handlers;
 
 use actix_web::{App, HttpServer, HttpResponse, web, get, post, Result};
 use actix_web_static_files;
@@ -47,7 +48,13 @@ async fn main() -> std::io::Result<()> {
 
     HttpServer::new(move || {
         let generated = generate();
-        App::new().app_data(provider.clone()).app_data(oauth.clone())
+        App::new()
+            .app_data(provider.clone()).app_data(oauth.clone())
+            .route("/users", web::get().to(handlers::get_users))
+            .route("/users/{id}", web::get().to(handlers::get_user_by_id))
+            .route("/users", web::post().to(handlers::add_user))
+            .route("/users/{id}", web::delete().to(handlers::delete_user))
+            .route("/oauth", web::get().to(handlers::get_oauth))
             .service(actix_web_static_files::ResourceFiles::new(
                 "/", generated,
             ).resolve_not_found_to_root(), )

@@ -12,6 +12,11 @@ const routes = [
     name: 'Dashboard', // name that appear in Sidebar
   },
   {
+    path: '/app/chat',
+    icon: 'ChatIcon',
+    name: 'Chat',
+  },
+  {
     path: '/app/forms',
     icon: 'FormsIcon',
     name: 'Forms',

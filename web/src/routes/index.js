@@ -10,6 +10,7 @@ const Modals = lazy(() => import('../pages/Modals'))
 const Tables = lazy(() => import('../pages/Tables'))
 const Page404 = lazy(() => import('../pages/404'))
 const Blank = lazy(() => import('../pages/Blank'))
+const Chat = lazy(()=>import('../pages/Chat'))
 
 /**
  * ⚠ These are internal routes!
@@ -25,6 +26,10 @@ const routes = [
   {
     path: '/dashboard', // the url
     component: Dashboard, // view rendered
+  },
+  {
+    path: '/chat',
+    component: Chat,
   },
   {
     path: '/forms',

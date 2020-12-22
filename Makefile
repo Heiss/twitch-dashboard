@@ -2,7 +2,7 @@ install:
 	sudo apt-get install curl wget git build-essential libssl-dev libdbus-1-dev tmux
 	sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 	sudo curl https://npmjs.org/install.sh | sh
-	cargo install cargo-watch
+	cargo install watchexec
 	npm install --prefix ./web/
 	cargo check --manifest-path server/Cargo.toml
 
@@ -16,8 +16,5 @@ build:
 
 watch:
 	tmux new-session \; \
-	split-window -v \; \
-	send-keys 'cd web && npm run watch' C-m \; \
-	split-window -h \; \
-	send-keys 'cd server && cargo watch -x "run" --watch-when-idle -w ../web/build' C-m \; \
+	send-keys 'cd server && watchexec -w ../web -w ./src -i ../web/build -i ./target -r -- "npm run build --prefix ../web && cargo clean -p twitch-dashboard-server && cargo run --bin twitch-dashboard-server"' C-m \; \
 	selectp -t 0 \;
